@@ -10,16 +10,30 @@
 
 int main(void)
 {
-  uint32_t i;
-  //project1();
-  uint32_t src = 0xABCD;
-  uint8_t * out = my_reverse(&src, 4);
-  // for(i=0;i<4;i++)
+  uint32_t i = 0;
+  // uint8_t *ptr = (uint8_t*)reserve_words(10);
+  // uint8_t digits = my_itoa(-0x1234, ptr, 16);
+  // int32_t value = my_atoi(ptr, digits, 16);
+  // printf("%d\n", value);
+  //print_string(ptr, digits);
+
+  project1();
+  // uint8_t * ptr = (uint8_t *)reserve_words(2);
+  // for(i=0;i<8;i++)
   // {
-  //   uint8_t tmp = *(out+i);
-  //   printf("%#06x\n", tmp);
+  //   *(ptr+i) = i;
   // }
-  printf("%d\n", out);
+  //uint8_t arr[11] = {0x34, 0xAB, 0xCD, 0xEF, 0x12, 0x34, 0x56, 0x78, 0x9A, 0xAD, 0xFE};
+  //my_memset(arr, 11, 5);
+  //my_memzero(arr, 11);
+  //my_reverse(arr, 11);
+//  printf("\nNext\n");
+  // for(i=0;i<12;i++)
+  // {
+  //   printf("%#02x\n", *(ptr+i));
+  // }
+  //test_memmove1();
+  //printf("%#02x %#02x %#02x %#02x \n", *out, *(out+1), *(out+2), *(out+3));
   while(1)
   {
     i++;

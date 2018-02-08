@@ -76,7 +76,7 @@ uint8_t * my_reserve(uint8_t * src, size_t length);
  * @param length is an integer of bytes to be allocated
  * @return is a pointer to memory if successful or NULL if not
  */
-void * reverse_words(size_t length);
+void * reserve_words(size_t length);
 
 
 

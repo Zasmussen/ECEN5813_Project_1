@@ -20,4 +20,6 @@
   */
 void print_array(uint8_t * start, uint32_t length);
 
+
+void print_string(uint8_t * start, uint32_t length);
 #endif
