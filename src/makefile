@@ -18,7 +18,7 @@ else ifeq ($(PLATFORM),HOST)
 	VERB = -DVERBOSE
 	LD = $(CC)
 else ifeq ($(PLATFORM),BBB)
-	CC = arm-linux-gnueabi-gcc
+	CC = arm-linux-gnueabihf-gcc
 	VERB = -DVERBOSE
 	LD = $(CC)
 endif
