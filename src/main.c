@@ -4,6 +4,7 @@
 
 int main(void)
 {
+  uint32_t i;
   #ifdef PROJECT1
     project1();
   #endif
