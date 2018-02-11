@@ -7,6 +7,7 @@
 #include "data.h"
 #include "debug.h"
 #include "memory.h"
+#include "platform.h"
 
 int main(void)
 {
@@ -24,7 +25,7 @@ int main(void)
   //ret = swap_data_endianness((uint8_t *)&data, sizeof(data));
   //printf("%#09x\n", data);
   ret = determine_endianness();
-  printf("%d\n", ret);
+  //PRINTF("%d\n", ret);
   // uint8_t * ptr = (uint8_t *)reserve_words(2);
   // for(i=0;i<8;i++)
   // {

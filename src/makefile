@@ -1,64 +1,74 @@
 PLATFORM =
 CC =
+INCLUDES =
 
 ifeq ($(PLATFORM),KL25Z)
 	CC = arm-none-eabi-gcc
-endif
-ifeq ($(PLATFORM),HOST)
-	CC = gcc
-endif
-ifeq ($(PLATFORM),BBB)
-	CC = gcc
-endif
-# KL25Z Variables
-CPU=cortex-m0plus
-ARCH=thumb
-SPECS = nosys.specs
+	CPU=cortex-m0plus
+	ARCH=armv6-m
+	SPECS = nosys.specs
 
-# Compiler variables
+	LDFILE= ../platform/MKL25Z128xxx4_flash.ld
+	LDFLAGS = -T$(LDFILE)
+	LD=arm-none-eabi-ld
+
+	ARMFLAGS = -mcpu=$(CPU) -mthumb -march=$(ARCH) --specs=$(SPECS) -mfloat-abi=soft -mfpu=fpv4-sp-d16
+else ifeq ($(PLATFORM),HOST)
+	CC = gcc
+	VERB = -DVERBOSE
+	LD = $(CC)
+else ifeq ($(PLATFORM),BBB)
+	CC = arm-linux-gnueabi-gcc
+	VERB = -DVERBOSE
+	LD = $(CC)
+endif
+
 CSTD=c99
-LD=arm-none-eabi-ld
-ARMTARGET = project1arm.elf
+COMMONFLAGS = -std=$(CSTD) -Wall -Werror -g -O0
+CPPFLAGS = $(VERB) -DPROJECT1
+LDFLAGS += -Wl,-Map=main.map
+CFLAGS += $(COMMONFLAGS) $(ARMFLAGS)
+
 TARGET = project1.elf
-LDFILE= ../platform/MKL25Z128xxx4_flash.ld
+
 
 INCLUDES = -I../inc/common -I../inc/kl25z -I../inc/CMSIS -I../inc/ -I../platform
 SRCS := main.c memory.c data.c conversion.c debug.c project1.c \
 
 
 # C Flag constants, Gives debug info, Sets C to CSTD version variable, Sets target ARM processor to CPU variable, Sets ARM instruction set to mthumb
-CFLAGS = -std=$(CSTD) -Wall -Werror -g -O0
-ARMFLAGS = -mcpu=$(CPU) -m$(ARCH) -march= --specs=$(SPECS)
-CPPFLAGS =
-LDFLAGS = -T=$(LDFILE)# -Wl,-Map=main.map
+
+
+
+
 
 # Create object variable for every source
-OBJS =$(SRCS:.c=.o)
+OBJS := $(SRCS:.c=.o)
+OBJS := $(OBJS:.S=.o)
 
 %.o : %.c
-	$(CC) $< $(CFLAGS) $(INCLUDES) -c -o $@
+	$(CC) $< $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c -o $@
+
+%.asm : %.c
+	$(CC) $< $(CFLAGS) $(INCLUDES) -S -o $@
+
+%.o : %.S
+	$(CC) $< $(CFLAGS) $(CPPFLAGS) $(INCLUDES) -c $< -o $@
+
+%.i : %.c
+	$(CC) $(CPPFLAGS) -E $< -o $@
 
 # Create main object file
-
 .PHONY: build
-ifeq ($(PLATFORM),KL25Z)
-build: $(ARMTARGET)
-endif
-ifeq ($(PLATFORM),HOST)
 build: $(TARGET)
-endif
-ifeq ($(PLATFORM),BBB)
-build: $(TARGET)
-endif
-
-
-$(ARMTARGET): $(OBJS)
-	$(LD) $(OBJS) $(LDFLAGS) -o $@
-
-$(TARGET): $(OBJS)
-	$(CC) $(OBJS) -o $@
-
 
 .PHONY: clean
 clean:
 		rm -f $(OBJS) $(TARGET) main.map
+
+.PHONY: compile-all
+
+
+
+$(TARGET): $(OBJS)
+	$(LD) $(OBJS) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@

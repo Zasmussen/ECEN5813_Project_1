@@ -12,63 +12,64 @@
 #include <stdio.h>
 #include "memory.h"
 #include "data.h"
+#include "platform.h"
 
 void print_cstd_type_sizes()
 {
   size_t tmp;
   tmp = sizeof(char);
-  printf("sizeof(char) = %lu\n", tmp);
+  PRINTF("sizeof(char) = %zu\n", tmp);
   tmp = sizeof(short);
-  printf("sizeof(short) = %lu\n", tmp);
+  PRINTF("sizeof(short) = %zu\n", tmp);
   tmp = sizeof(long);
-  printf("sizeof(long) = %lu\n", tmp);
+  PRINTF("sizeof(long) = %zu\n", tmp);
   tmp = sizeof(double);
-  printf("sizeof(double) = %lu\n", tmp);
+  PRINTF("sizeof(double) = %zu\n", tmp);
   tmp = sizeof(float);
-  printf("sizeof(float) = %lu\n", tmp);
+  PRINTF("sizeof(float) = %zu\n", tmp);
   tmp = sizeof(unsigned char);
-  printf("sizeof(unsigned char) = %lu\n", tmp);
+  PRINTF("sizeof(unsigned char) = %zu\n", tmp);
   tmp = sizeof(unsigned int);
-  printf("sizeof(unsigned int) = %lu\n", tmp);
+  PRINTF("sizeof(unsigned int) = %zu\n", tmp);
   tmp = sizeof(unsigned long);
-  printf("sizeof(unsigned long) = %lu\n", tmp);
+  PRINTF("sizeof(unsigned long) = %zu\n", tmp);
   tmp = sizeof(signed char);
-  printf("sizeof(signed char) = %lu\n", tmp);
+  PRINTF("sizeof(signed char) = %zu\n", tmp);
   tmp = sizeof(signed int);
-  printf("sizeof(signed int) = %lu\n", tmp);
+  PRINTF("sizeof(signed int) = %zu\n", tmp);
   tmp = sizeof(signed long);
-  printf("sizeof(signed long) = %lu\n", tmp);
+  PRINTF("sizeof(signed long) = %zu\n", tmp);
 }
 
 void print_stdint_type_sizes()
 {
   size_t tmp;
   tmp = sizeof(int8_t);
-  printf("sizeof(int8_t) = %lu\n", tmp);
+  PRINTF("sizeof(int8_t) = %zu\n", tmp);
   tmp = sizeof(uint8_t);
-  printf("sizeof(uint8_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint8_t) = %zu\n", tmp);
   tmp = sizeof(int16_t);
-  printf("sizeof(int16_t) = %lu\n", tmp);
+  PRINTF("sizeof(int16_t) = %zu\n", tmp);
   tmp = sizeof(uint16_t);
-  printf("sizeof(uint16_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint16_t) = %zu\n", tmp);
   tmp = sizeof(int32_t);
-  printf("sizeof(int32_t) = %lu\n", tmp);
+  PRINTF("sizeof(int32_t) = %zu\n", tmp);
   tmp = sizeof(uint_fast8_t);
-  printf("sizeof(uint_fast8_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint_fast8_t) = %zu\n", tmp);
   tmp = sizeof(uint_fast16_t);
-  printf("sizeof(uint_fast16_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint_fast16_t) = %zu\n", tmp);
   tmp = sizeof(uint_fast32_t);
-  printf("sizeof(uint_fast32_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint_fast32_t) = %zu\n", tmp);
   tmp = sizeof(uint_least8_t);
-  printf("sizeof(uint_least8_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint_least8_t) = %zu\n", tmp);
   tmp = sizeof(uint_least16_t);
-  printf("sizeof(uint_least16_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint_least16_t) = %zu\n", tmp);
   tmp = sizeof(uint_least32_t);
-  printf("sizeof(uint_least32_t) = %lu\n", tmp);
+  PRINTF("sizeof(uint_least32_t) = %zu\n", tmp);
   tmp = sizeof(size_t);
-  printf("sizeof(size_t) = %lu\n", tmp);
+  PRINTF("sizeof(size_t) = %zu\n", tmp);
   tmp = sizeof(ptrdiff_t);
-  printf("sizeof(ptrdiff_t) = %lu\n", tmp);
+  PRINTF("sizeof(ptrdiff_t) = %zu\n", tmp);
 
 }
 
@@ -76,31 +77,31 @@ void print_pointer_sizes()
 {
   size_t tmp;
   tmp = sizeof(char *);
-  printf("sizeof(char *) = %lu\n", tmp);
+  PRINTF("sizeof(char *) = %zu\n", tmp);
   tmp = sizeof(short *);
-  printf("sizeof(short *) = %lu\n", tmp);
+  PRINTF("sizeof(short *) = %zu\n", tmp);
   tmp = sizeof(int *);
-  printf("sizeof(int *) = %lu\n", tmp);
+  PRINTF("sizeof(int *) = %zu\n", tmp);
   tmp = sizeof(long *);
-  printf("sizeof(long *) = %lu\n", tmp);
+  PRINTF("sizeof(long *) = %zu\n", tmp);
   tmp = sizeof(double *);
-  printf("sizeof(double *) = %lu\n", tmp);
+  PRINTF("sizeof(double *) = %zu\n", tmp);
   tmp = sizeof(float *);
-  printf("sizeof(float *) = %lu\n", tmp);
+  PRINTF("sizeof(float *) = %zu\n", tmp);
   tmp = sizeof(void *);
-  printf("sizeof(void *) = %lu\n", tmp);
+  PRINTF("sizeof(void *) = %zu\n", tmp);
   tmp = sizeof(int8_t *);
-  printf("sizeof(int8_t *) = %lu\n", tmp);
+  PRINTF("sizeof(int8_t *) = %zu\n", tmp);
   tmp = sizeof(int16_t*);
-  printf("sizeof(int16_t *) = %lu\n", tmp);
+  PRINTF("sizeof(int16_t *) = %zu\n", tmp);
   tmp = sizeof(int32_t *);
-  printf("sizeof(int32_t *) = %lu\n", tmp);
+  PRINTF("sizeof(int32_t *) = %zu\n", tmp);
   tmp = sizeof(char **);
-  printf("sizeof(char **) = %lu\n", tmp);
+  PRINTF("sizeof(char **) = %zu\n", tmp);
   tmp = sizeof(int **);
-  printf("sizeof(int **) = %lu\n", tmp);
+  PRINTF("sizeof(int **) = %zu\n", tmp);
   tmp = sizeof(void **);
-  printf("sizeof(void **) = %lu\n", tmp);
+  PRINTF("sizeof(void **) = %zu\n", tmp);
 
 }
 

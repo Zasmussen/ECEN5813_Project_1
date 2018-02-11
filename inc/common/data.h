@@ -1,6 +1,6 @@
 /**
- * @file debug.c
- * @brief debug source implementing debug functions
+ * @file data.h
+ * @brief Functions and macros to define data info on system
  *
  * @author Zachary Asmussen
  * @date January 30th, 2018
