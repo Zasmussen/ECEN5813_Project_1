@@ -64,7 +64,6 @@ uint8_t * my_reverse(uint8_t * src, size_t length)
   for(i=0;i<(length/2);i++)
   {
     uint8_t tmp = *(src+i);
-    //uint8_t last = *(src+length-1-i);
     *(src+i) = *(src+length-1-i);
     *(src+length-1-i) = tmp;
   }

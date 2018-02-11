@@ -66,7 +66,7 @@ uint8_t * my_memzero(uint8_t * src, size_t length);
  * @param length is an integer of bytes to be reversed
  * @return is a byte pointer to the source of reverse
  */
-uint8_t * my_reserve(uint8_t * src, size_t length);
+uint8_t * my_reverse(uint8_t * src, size_t length);
 
 
 

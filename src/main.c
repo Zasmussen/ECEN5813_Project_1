@@ -17,7 +17,14 @@ int main(void)
   // printf("%d\n", value);
   //print_string(ptr, digits);
 
-  project1();
+  //project1();
+  int8_t ret;
+  //uint32_t data = 0x1234567;
+  //printf("%#09x\n", data);
+  //ret = swap_data_endianness((uint8_t *)&data, sizeof(data));
+  //printf("%#09x\n", data);
+  ret = determine_endianness();
+  printf("%d\n", ret);
   // uint8_t * ptr = (uint8_t *)reserve_words(2);
   // for(i=0;i<8;i++)
   // {

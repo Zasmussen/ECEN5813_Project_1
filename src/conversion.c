@@ -9,7 +9,8 @@
 #include "conversion.h"
 #include <stdint.h>
 #include <stdlib.h>
-#include <debug.h>
+#include "debug.h"
+#include "memory.h"
 #define WORD_SIZE_IN_BYTES 4
 
 uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
@@ -42,7 +43,7 @@ uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
       *(ptr+j) = *(ptr+j)+55;
     }
   }
-  *(ptr+j) = NULL;
+  *(ptr+j) = '\0';
   return j+neg+1;
 }
 

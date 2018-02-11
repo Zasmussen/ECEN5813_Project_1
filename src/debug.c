@@ -13,12 +13,15 @@
 
 void print_array(uint8_t * start, uint32_t length)
 {
+#ifdef VERBOSE
   uint32_t i;
   for(i=0;i<length-1;i++)
   {
     printf("%d,", *(start+i));
   }
   printf("%d\n", *(start+i));
+#endif
+  return;
 }
 
 void print_string(uint8_t * start, uint32_t length)

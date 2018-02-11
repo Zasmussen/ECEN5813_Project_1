@@ -1,24 +1,36 @@
+PLATFORM =
+CC =
 
-# Make override variables
+ifeq ($(PLATFORM),KL25Z)
+	CC = arm-none-eabi-gcc
+endif
+ifeq ($(PLATFORM),HOST)
+	CC = gcc
+endif
+ifeq ($(PLATFORM),BBB)
+	CC = gcc
+endif
+# KL25Z Variables
 CPU=cortex-m0plus
 ARCH=thumb
 SPECS = nosys.specs
 
 # Compiler variables
-CSTD=c11
-CC=arm-none-eabi-gcc
+CSTD=c99
 LD=arm-none-eabi-ld
-TARGET = main.elf
-LDFILE=MKL25Z128xxx4_flash.ld
+ARMTARGET = project1arm.elf
+TARGET = project1.elf
+LDFILE= ../platform/MKL25Z128xxx4_flash.ld
 
-INCLUDES = -Iinc
-SRCS := src/main.c \
+INCLUDES = -I../inc/common -I../inc/kl25z -I../inc/CMSIS -I../inc/ -I../platform
+SRCS := main.c memory.c data.c conversion.c debug.c project1.c \
 
 
 # C Flag constants, Gives debug info, Sets C to CSTD version variable, Sets target ARM processor to CPU variable, Sets ARM instruction set to mthumb
-CFLAGS = -std=$(CSTD) -mcpu=$(CPU) -m$(ARCH) --specs=$(SPECS) -Wall
-
-LDFLAGS = -T=$(LDFILE)# -Wl,-Map=main.map 
+CFLAGS = -std=$(CSTD) -Wall -Werror -g -O0
+ARMFLAGS = -mcpu=$(CPU) -m$(ARCH) -march= --specs=$(SPECS)
+CPPFLAGS =
+LDFLAGS = -T=$(LDFILE)# -Wl,-Map=main.map
 
 # Create object variable for every source
 OBJS =$(SRCS:.c=.o)
@@ -28,11 +40,24 @@ OBJS =$(SRCS:.c=.o)
 
 # Create main object file
 
-.PHONY: all
-all: $(TARGET)
+.PHONY: build
+ifeq ($(PLATFORM),KL25Z)
+build: $(ARMTARGET)
+endif
+ifeq ($(PLATFORM),HOST)
+build: $(TARGET)
+endif
+ifeq ($(PLATFORM),BBB)
+build: $(TARGET)
+endif
+
+
+$(ARMTARGET): $(OBJS)
+	$(LD) $(OBJS) $(LDFLAGS) -o $@
 
 $(TARGET): $(OBJS)
-	$(LD) $(OBJS) $(LDFLAGS) -o $@
+	$(CC) $(OBJS) -o $@
+
 
 .PHONY: clean
 clean:
