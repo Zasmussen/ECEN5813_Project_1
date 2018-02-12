@@ -2,6 +2,9 @@
  * @file conversion.c
  * @brief conversion source file implementing conversion header functions
  *
+ * Conversion functions including ATOI and ITOA user implemented versions
+ * Used to convert integers to ascii or vice versa
+ *
  * @author Zachary Asmussen
  * @date January 30th, 2018
  *
@@ -11,10 +14,14 @@
 #include <stdlib.h>
 #include "debug.h"
 #include "memory.h"
-#define WORD_SIZE_IN_BYTES 4
+
 
 uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
 {
+  if(base <= 1 || base > 16 || ptr == NULL)
+  {
+    return NULL;
+  }
   uint32_t i = 0;
   uint8_t neg = 0;
   if(data < 0)
@@ -49,6 +56,10 @@ uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
 
 int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base)
 {
+  if(base <= 1 || base > 16 || ptr == NULL)
+  {
+    return NULL;
+  }
   uint32_t i;
   uint8_t neg = 0;
   digits--;

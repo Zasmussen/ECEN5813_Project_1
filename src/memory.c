@@ -2,6 +2,10 @@
  * @file memory.c
  * @brief Memory source implementing header functions
  *
+ * Various implementations of memory manipulation functions.
+ * Moves memory, copies memory, sets memory values, reverses
+ * bytes, reserves heap space, and frees space.
+ *
  * @author Zachary Asmussen
  * @date January 30th, 2018
  *
@@ -13,6 +17,10 @@
 
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 {
+  if(src == NULL || length <= 0)
+  {
+    return NULL;
+  }
 
   uint32_t i;
   uint8_t * tmp = (uint8_t*) malloc(length);
@@ -30,6 +38,11 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 
 uint8_t * my_memcpy(uint8_t * src, uint8_t * dst, size_t length)
 {
+  if(src == NULL || length <= 0)
+  {
+    return NULL;
+  }
+
   uint32_t i;
   for(i=0;i<length;i++)
   {
@@ -40,6 +53,11 @@ uint8_t * my_memcpy(uint8_t * src, uint8_t * dst, size_t length)
 
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value)
 {
+  if(src == NULL || length <= 0)
+  {
+    return NULL;
+  }
+
   uint32_t i;
   for(i=0;i<length;i++)
   {
@@ -50,6 +68,11 @@ uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value)
 
 uint8_t * my_memzero(uint8_t * src, size_t length)
 {
+  if(src == NULL || length <= 0)
+  {
+    return NULL;
+  }
+
   uint32_t i;
   for(i=0;i<length;i++)
   {
@@ -60,6 +83,11 @@ uint8_t * my_memzero(uint8_t * src, size_t length)
 
 uint8_t * my_reverse(uint8_t * src, size_t length)
 {
+  if(src == NULL || length <= 0)
+  {
+    return NULL;
+  }
+
   uint32_t i;
   for(i=0;i<(length/2);i++)
   {

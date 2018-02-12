@@ -2,6 +2,9 @@
  * @file memory.h
  * @brief Memory header defining all memory function prototypes
  *
+ * Memory function definitions that manipulate memory across all
+ * systems. Functions are implemented in .c file.
+ *
  * @author Zachary Asmussen
  * @date January 30th, 2018
  *

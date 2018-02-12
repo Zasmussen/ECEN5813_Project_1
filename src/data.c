@@ -1,6 +1,10 @@
 /**
- * @file debug.c
- * @brief debug source implementing debug functions
+ * @file data.c
+ * @brief data source file implementing data header functions
+ *
+ * Functions defined in debug.h are implemented here. They provided
+ * information on the size of various data types and endianness of
+ * the current system
  *
  * @author Zachary Asmussen
  * @date January 30th, 2018
