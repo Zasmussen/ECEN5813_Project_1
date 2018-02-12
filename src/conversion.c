@@ -20,7 +20,7 @@ uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
 {
   if(base <= 1 || base > 16 || ptr == NULL)
   {
-    return NULL;
+    return -1;
   }
   uint32_t i = 0;
   uint8_t neg = 0;
@@ -58,7 +58,7 @@ int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base)
 {
   if(base <= 1 || base > 16 || ptr == NULL)
   {
-    return NULL;
+    return 0xDEADBEEF;
   }
   uint32_t i;
   uint8_t neg = 0;
